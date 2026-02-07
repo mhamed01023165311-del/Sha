@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بورتفوليو - مصور وفيديو جرافر محترف</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">أحمد<span class="logo-highlight">علي</span></span>
+                <span class="logo-sub">مصور وفيديو جرافر</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> عني</a></li>
+                <li><a href="#portfolio" class="nav-link"><i class="fas fa-photo-video"></i> أعمالي</a></li>
+                <li><a href="#services" class="nav-link"><i class="fas fa-concierge-bell"></i> خدماتي</a></li>
+                <li><a href="#cv" class="nav-link"><i class="fas fa-file-alt"></i> السيرة الذاتية</a></li>
+                <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> تواصل معي</a></li>
+            </ul>
+            
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- القسم الرئيسي -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">أحمد علي</h1>
+            <p class="hero-subtitle">مصور وفيديو جرافر محترف</p>
+            <p class="hero-desc">أكثر من 8 سنوات خبرة في صناعة الفيديو والمونتاج والإخراج</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary">أعرض أعمالي</a>
+                <a href="#contact" class="btn btn-secondary">تواصل معي</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم عني -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title">من أنا؟</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="أحمد علي" class="profile-img">
+                </div>
+                <div class="about-text">
+                    <h3>مرحبًا، أنا أحمد</h3>
+                    <p>مصور وفيديو جرافر محترف مع أكثر من 8 سنوات خبرة في مجال الإنتاج المرئي. تخصصت في إنتاج الفيديوهات التسويقية، الأفلام الوثائقية، والفيديوهات الموسيقية.</p>
+                    <p>أعمل حالياً على عدة مشاريع مستقبلية تشمل فيلم وثائقي عن التراث المصري، وسلسلة فيديوهات تعليمية عن فنون المونتاج.</p>
+                    
+                    <div class="skills">
+                        <h4>مهاراتي:</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Adobe Premiere Pro</span>
+                            <span class="skill-tag">After Effects</span>
+                            <span class="skill-tag">DaVinci Resolve</span>
+                            <span class="skill-tag">Cinematography</span>
+                            <span class="skill-tag">Color Grading</span>
+                            <span class="skill-tag">Sound Design</span>
+                            <span class="skill-tag">Motion Graphics</span>
+                            <span class="skill-tag">Script Writing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأعمال -->
+    <section id="portfolio" class="section portfolio-section">
+        <div class="container">
+            <h2 class="section-title">معرض أعمالي</h2>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="completed">أعمال منجزة</button>
+                <button class="filter-btn" data-filter="upcoming">مشاريع مستقبلية</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- أعمال مكتملة -->
+                <div class="portfolio-item completed" data-category="completed">
+                    <div class="portfolio-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="مشروع فيديو تسويقي">
+                        <div class="portfolio-overlay">
+                            <h3>فيديو تسويقي لشركة تكنولوجيا</h3>
+                            <p>2023 • إخراج وتصوير ومونتاج</p>
+                            <a href="#" class="portfolio-view"><i class="fas fa-play"></i> شاهد الفيديو</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>فيديو تسويقي - شركة تك</h3>
+                        <p>عمل تسويقي كامل لشركة ناشئة في مجال التكنولوجيا</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item completed" data-category="completed">
+                    <div class="portfolio-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1489599809516-9827b6d1cf13?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="فيديو وثائقي">
+                        <div class="portfolio-overlay">
+                            <h3>فيلم وثائقي قصير</h3>
+                            <p>2022 • إخراج وتصوير</p>
+                            <a href="#" class="portfolio-view"><i class="fas fa-play"></i> شاهد الفيديو</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>أصوات المدينة</h3>
+                        <p>فيلم وثائقي عن حياة سائقي التوك توك في القاهرة</p>
+                    </div>
+                </div>
+                
+                <!-- مشاريع مستقبلية -->
+                <div class="portfolio-item upcoming" data-category="upcoming">
+                    <div class="portfolio-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1533237264987-ae43347ae3c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="مشروع مستقبلي">
+                        <div class="portfolio-overlay">
+                            <h3>فيلم وثائقي عن التراث</h3>
+                            <p>قيد الإنتاج • متوقع 2024</p>
+                            <span class="portfolio-status">قيد العمل</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>تراثنا المصري</h3>
+                        <p>سلسلة وثائقية عن الحرف اليدوية المصرية المهددة بالانقراض</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item upcoming" data-category="upcoming">
+                    <div class="portfolio-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1496065187959-7f07b8353c55?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="مشروع مستقبلي">
+                        <div class="portfolio-overlay">
+                            <h3>دورات تعليمية أونلاين</h3>
+                            <p>قيد التجهيز • متوقع 2024</p>
+                            <span class="portfolio-status">قيد التخطيط</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>أكاديمية الفيديو</h3>
+                        <p>سلسلة دورات تعليمية عن أساسيات التصوير والمونتاج للمبتدئين</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section id="services" class="section services-section">
+        <div class="container">
+            <h2 class="section-title">خدماتي</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>تصوير فيديو احترافي</h3>
+                    <p>تصوير فيديو بدقة 4K مع أحدث التقنيات والإضاءات الاحترافية</p>
+                    <ul class="service-features">
+                        <li>تصوير مناسبات</li>
+                        <li>تصوير منتجات</li>
+                        <li>تصوير فني وإبداعي</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>مونتاج وفيديو جرافيك</h3>
+                    <p>مونتاج احترافي مع إضافة مؤثرات بصرية وجرافيك متحرك</p>
+                    <ul class="service-features">
+                        <li>مونتاج فيديوهات</li>
+                        <li>مؤثرات بصرية</li>
+                        <li>تصميم جرافيك متحرك</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-photo-video"></i>
+                    </div>
+                    <h3>إنتاج فيديوهات تسويقية</h3>
+                    <p>تصميم وإنتاج فيديوهات تسويقية كاملة للمنتجات والخدمات</p>
+                    <ul class="service-features">
+                        <li>فيديوهات إعلانية</li>
+                        <li>فيديوهات توضيحية</li>
+                        <li>فيديوهات للوسائط الاجتماعية</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>تصميم صوتي ومكساج</h3>
+                    <p>تسجيل صوت احترافي وتصميم مؤثرات صوتية ومكساج صوتي</p>
+                    <ul class="service-features">
+                        <li>تسجيل صوت</li>
+                        <li>مؤثرات صوتية</li>
+                        <li>مكساج صوتي احترافي</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم السيرة الذاتية -->
+    <section id="cv" class="section cv-section">
+        <div class="container">
+            <h2 class="section-title">سيرتي الذاتية</h2>
+            <div class="cv-content">
+                <div class="cv-download">
+                    <a href="#" class="btn btn-primary btn-large">
+                        <i class="fas fa-download"></i> تحميل السيرة الذاتية (PDF)
+                    </a>
+                </div>
+                
+                <div class="cv-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020 - الآن</div>
+                        <div class="timeline-content">
+                            <h3>مصور وفيديو جرافر حر</h3>
+                            <p>العمل مع عملاء محليين ودوليين في إنتاج فيديوهات تسويقية، أفلام وثائقية، وفيديوهات موسيقية.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2017 - 2020</div>
+                        <div class="timeline-content">
+                            <h3>مدير مونتاج - قناة النجوم</h3>
+                            <p>الإشراف على فريق مونتاج وتدريب 5 مونتيريين جدد، إنتاج أكثر من 500 ساعة بث تلفزيوني.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2015 - 2017</div>
+                        <div class="timeline-content">
+                            <h3>مونتير مساعد - استوديو النور</h3>
+                            <p>مساعدة في مونتاج المسلسلات التلفزيونية والإعلانات التجارية.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التواصل -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">تواصل معي</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>الهاتف</h3>
+                            <p>+20 123 456 7890</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>البريد الإلكتروني</h3>
+                            <p>ahmed@example.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>العنوان</h3>
+                            <p>القاهرة، مصر</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="اسمك" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="بريدك الإلكتروني" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder="الموضوع">
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="رسالتك" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">إرسال الرسالة</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">أحمد<span class="logo-highlight">علي</span></span>
+                </div>
+                
+                <p class="footer-text">مصور وفيديو جرافر محترف | 8+ سنوات خبرة</p>
+                
+                <p class="footer-copyright">
+                    &copy; <span id="currentYear"></span> جميع الحقوق محفوظة | Ahmed Ali Portfolio
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر العودة للأعلى -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- سكريبتات -->
+    <script src="script.js"></script>
+</body>
+  </html>
