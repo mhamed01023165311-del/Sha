@@ -6,25 +6,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // تعريف العناصر
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.querySelector('.nav-menu');
+    const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+    const bottomNavLinks = document.querySelectorAll('.bottom-nav a');
     const navLinks = document.querySelectorAll('.nav-link');
-    const backToTop = document.getElementById('backToTop');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    const contactForm = document.getElementById('contactForm');
     
     // تبديل قائمة الهاتف
-    navToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        this.querySelector('i').classList.toggle('fa-bars');
-        this.querySelector('i').classList.toggle('fa-times');
-    });
+    if (navToggle) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+    }
     
     // إغلاق القائمة عند النقر على رابط
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            navToggle.querySelector('i').classList.add('fa-bars');
-            navToggle.querySelector('i').classList.remove('fa-times');
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                if (navToggle) {
+                    navToggle.querySelector('i').classList.add('fa-bars');
+                    navToggle.querySelector('i').classList.remove('fa-times');
+                }
+            }
             
             // تحديث الرابط النشط
             navLinks.forEach(item => item.classList.remove('active'));
@@ -32,106 +36,45 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // تصفية معرض الأعمال
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // إزالة النشط من كل الأزرار
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // إضافة النشط للزر المختار
-            this.classList.add('active');
-            
-            // الحصول على قيمة التصفية
-            const filterValue = this.getAttribute('data-filter');
-            
-            // تصفية العناصر
-            portfolioItems.forEach(item => {
-                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 10);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            });
-        });
-    });
+    // تحديد الصفحة النشطة في الشريط الجانبي
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     
-    // إظهار/إخفاء زر العودة للأعلى
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 500) {
-            backToTop.classList.add('show');
+    sidebarLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (currentPage === linkHref || 
+            (currentPage === '' && linkHref === 'index.html') ||
+            (currentPage.includes(linkHref.replace('.html', ''))) ) {
+            link.classList.add('active');
         } else {
-            backToTop.classList.remove('show');
-        }
-        
-        // تحديث الرابط النشط في القائمة أثناء التمرير
-        updateActiveNavLink();
-    });
-    
-    // تحديث الرابط النشط في القائمة
-    function updateActiveNavLink() {
-        let current = '';
-        const sections = document.querySelectorAll('section');
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (scrollY >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    }
-    
-    // إرسال نموذج التواصل (تجريبي)
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // في التطبيق الحقيقي، هنا نرسل البيانات للخادم
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        
-        // عرض رسالة نجاح
-        alert(`شكرًا ${name}! تم استلام رسالتك بنجاح. سنتواصل معك على ${email} في أقرب وقت.`);
-        
-        // إعادة تعيين النموذج
-        contactForm.reset();
+        }
     });
     
-    // تحريك سلس للروابط
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
+    // نفس الشيء للبوتوم ناف
+    bottomNavLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (currentPage === linkHref || 
+            (currentPage === '' && linkHref === 'index.html') ||
+            (currentPage.includes(linkHref.replace('.html', ''))) ) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
     });
     
-    // تأثيرات عند التمرير (لإضافة حركات عند ظهور العناصر)
+    // تحديث الرابط النشط في قائمة التنقل العلوية
+    navLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (currentPage === linkHref || 
+            (currentPage === '' && linkHref === 'index.html') ||
+            (currentPage.includes(linkHref.replace('.html', ''))) ) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+    
+    // إضافة تأثيرات عند التمرير (اختياري)
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -100px 0px'
@@ -140,13 +83,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
+                entry.target.classList.add('fade-in');
             }
         });
     }, observerOptions);
     
     // مراقبة العناصر لإضافة تأثيرات
-    document.querySelectorAll('.service-card, .portfolio-item, .timeline-item').forEach(el => {
+    document.querySelectorAll('.feature-card, .work-item').forEach(el => {
         observer.observe(el);
     });
+    
+    // إضافة CSS للـ fade-in
+    const fadeInStyles = `
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    `;
+    
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = fadeInStyles;
+    document.head.appendChild(styleSheet);
 });
