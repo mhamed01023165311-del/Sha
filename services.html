@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الخدمات | أحمد علي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .services-page {
+            padding-top: 100px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .service-card {
+            background-color: var(--dark-light);
+            border-radius: 10px;
+            padding: 30px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--primary-color);
+        }
+        
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-align: center;
+            flex-grow: 1;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            color: var(--text-light);
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .service-features li::before {
+            content: "✓";
+            color: var(--primary-color);
+            position: absolute;
+            right: 0;
+            font-weight: bold;
+        }
+        
+        .service-price {
+            text-align: center;
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .price-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .service-btn {
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .pricing-section {
+            background-color: var(--dark-light);
+            padding: 80px 0;
+            margin-top: 80px;
+        }
+        
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .plan-card {
+            background-color: var(--dark-color);
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+        }
+        
+        .plan-card.popular {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+        
+        .plan-card.popular::before {
+            content: 'الأكثر طلباً';
+            position: absolute;
+            top: -12px;
+            right: 50%;
+            transform: translateX(50%);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+        }
+        
+        .plan-period {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .plan-features li {
+            padding: 10px 0;
+            color: var(--text-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-features li i {
+            color: var(--primary-color);
+            margin-left: 10px;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .step p {
+            color: var(--text-light);
+        }
+        
+        @media (max-width: 992px) {
+            .plan-card.popular {
+                transform: scale(1);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-plans {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="لوجو أحمد علي" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-main">أحمد<span class="logo-highlight">علي</span></span>
+                    <span class="logo-sub">مصور وفيديو جرافر</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="about.html" class="nav-link"><i class="fas fa-user"></i> عني</a></li>
+                <li><a href="portfolio.html" class="nav-link"><i class="fas fa-photo-video"></i> أعمالي</a></li>
+                <li><a href="services.html" class="nav-link active"><i class="fas fa-concierge-bell"></i> خدماتي</a></li>
+                <li><a href="cv.html" class="nav-link"><i class="fas fa-file-alt"></i> السيرة الذاتية</a></li>
+                <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> تواصل معي</a></li>
+            </ul>
+            
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidebar-nav">
+        <a href="index.html" title="الرئيسية">
+            <i class="fas fa-home"></i>
+            <span>الرئيسية</span>
+        </a>
+        <a href="about.html" title="عني">
+            <i class="fas fa-user"></i>
+            <span>عني</span>
+        </a>
+        <a href="portfolio.html" title="أعمالي">
+            <i class="fas fa-photo-video"></i>
+            <span>أعمالي</span>
+        </a>
+        <a href="services.html" class="active" title="خدماتي">
+            <i class="fas fa-concierge-bell"></i>
+            <span>خدماتي</span>
+        </a>
+        <a href="cv.html" title="السيرة الذاتية">
+            <i class="fas fa-file-alt"></i>
+            <span>السيرة الذاتية</span>
+        </a>
+        <a href="contact.html" title="تواصل معي">
+            <i class="fas fa-envelope"></i>
+            <span>التواصل</span>
+        </a>
+    </div>
+
+    <section class="section services-page">
+        <div class="container">
+            <h1 class="section-title">خدماتي</h1>
+            <p class="text-center" style="color: var(--text-light); max-width: 800px; margin: 0 auto 50px;">
+                أقدم مجموعة متكاملة من خدمات الإنتاج المرئي بدءًا من التصوير حتى التسليم النهائي. كل خدمة تُقدم بأعلى معايير الجودة والاحترافية.
+            </p>
+            
+            <div class="services-grid">
+                <!-- خدمة 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>تصوير فيديو احترافي</h3>
+                    <p>تصوير فيديو بدقة 4K مع أحدث الكاميرات الاحترافية والإضاءات المتطورة</p>
+                    <ul class="service-features">
+                        <li>تصوير مناسبات وأحداث</li>
+                        <li>تصوير منتجات بإضاءة احترافية</li>
+                        <li>تصوير فني وإبداعي</li>
+                        <li>تصوير دعائي وتجاري</li>
+                        <li>تصوير جوي (درون)</li>
+                    </ul>
+                    <div class="service-price">
+                        <div class="price">يبدأ من 5,000 جنيه</div>
+                        <div class="price-period">لليوم الواحد</div>
+                        <a href="contact.html" class="btn btn-primary service-btn">اطلب الخدمة</a>
+                    </div>
+                </div>
+                
+                <!-- خدمة 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>مونتاج وفيديو جرافيك</h3>
+                    <p>مونتاج احترافي مع إضافة مؤثرات بصرية وجرافيك متحرك احترافي</p>
+                    <ul class="service-features">
+                        <li>مونتاج فيديوهات بمختلف الصيغ</li>
+                        <li>تصميم مؤثرات بصرية خاصة</li>
+                        <li>تصميم جرافيك متحرك (موشن جرافيك)</li>
+                        <li>تصميم شعارات متحركة</li>
+                        <li>تصميم عروض تقديمية متحركة</li>
+                    </ul>
+                    <div class="service-price">
+                        <div class="price">يبدأ من 2,000 جنيه</div>
+                        <div class="price-period">للدقيقة الواحدة</div>
+                        <a href="contact.html" class="btn btn-primary service-btn">اطلب الخدمة</a>
+                    </div>
+                </div>
+                
+                <!-- خدمة 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-photo-video"></i>
+                    </div>
+                    <h3>إنتاج فيديوهات تسويقية</h3>
+                    <p>تصميم وإنتاج فيديوهات تسويقية كاملة للمنتجات والخدمات والشركات</p>
+                    <ul class="service-features">
+                        <li>فيديوهات إعلانية للتلفزيون</li>
+                        <li>فيديوهات توضيحية (Explainer Videos)</li>
+                        <li>فيديوهات للوسائط الاجتماعية</li>
+                        <li>فيديوهات تدريبية وتعليمية</li>
+                        <li>فيديوهات تعريفية للشركات</li>
+                    </ul>
+                    <div class="service-price">
+                        <div class="price">يبدأ من 10,000 جنيه</div>
+                        <div class="price-period">للمشروع الكامل</div>
+                        <a href="contact.html" class="btn btn-primary service-btn">اطلب الخدمة</a>
+                    </div>
+                </div>
+                
+                <!-- خدمة 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>تصميم صوتي ومكساج</h3>
+                    <p>تسجيل صوت احترافي وتصميم مؤثرات صوتية ومكساج صوتي احترافي</p>
+                    <ul class="service-features">
+                        <li>تسجيل صوتي في استوديو مجهز</li>
+                        <li>تصميم مؤثرات صوتية خاصة</li>
+                        <li>مكساج صوتي احترافي</li>
+                        <li>تسجيل تعليق صوتي</li>
+                        <li>تصميم الموسيقى التصويرية</li>
+                    </ul>
+                    <div class="service-price">
+                        <div class="price">يبدأ من 1,500 جنيه</div>
+                        <div class="price-period">للدقيقة الواحدة</div>
+                        <a href="contact.html" class="btn btn-primary service-btn">اطلب الخدمة</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم خطوات العمل -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">كيفية العمل معي</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>التواصل والمناقشة</h3>
+                    <p>نناقش فكرة المشروع والمتطلبات والتفاصيل عبر الهاتف أو الاجتماع المباشر</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>التخطيط والإعداد</h3>
+                    <p>أعد خطة العمل وجدول التصوير وقائمة المعدات المطلوبة</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>التنفيذ والتصوير</h3>
+                    <p>أقوم بالتصوير في الموقع المحدد مع فريق عمل متخصص</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>المونتاج والتسليم</h3>
+                    <p>أقوم بالمونتاج والإخراج النهائي وتسليم العمل في الوقت المتفق عليه</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الباقات -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">باقات العروض</h2>
+            <p class="text-center" style="color: var(--text-light); max-width: 800px; margin: 0 auto 50px;">
+                اختر الباقة المناسبة لمشروعك. جميع الباقات تشمل أعلى معايير الجودة والاحترافية
+            </p>
+            
+            <div class="pricing-plans">
+                <!-- الباقة الأساسية -->
+                <div class="plan-card">
+                    <h3 class="plan-name">الباقة الأساسية</h3>
+                    <div class="plan-price">5,000 ج.م</div>
+                    <div class="plan-period">للمشروع البسيط</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> تصوير فيديو ليوم واحد</li>
+                        <li><i class="fas fa-check"></i> مونتاج حتى 3 دقائق</li>
+                        <li><i class="fas fa-check"></i> مؤثرات بصرية أساسية</li>
+                        <li><i class="fas fa-check"></i> تسليم خلال 7 أيام</li>
+                        <li><i class="fas fa-times"></i> موشن جرافيك</li>
+                        <li><i class="fas fa-times"></i> تصوير جوي</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">اختر هذه الباقة</a>
+                </div>
+                
+                <!-- الباقة الاحترافية -->
+                <div class="plan-card popular">
+                    <h3 class="plan-name">الباقة الاحترافية</h3>
+                    <div class="plan-price">15,000 ج.م</div>
+                    <div class="plan-period">للمشروع المتكامل</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> تصوير فيديو ليومين</li>
+                        <li><i class="fas fa-check"></i> مونتاج حتى 10 دقائق</li>
+                        <li><i class="fas fa-check"></i> موشن جرافيك متقدم</li>
+                        <li><i class="fas fa-check"></i> تسليم خلال 14 يوم</li>
+                        <li><i class="fas fa-check"></i> تصوير جوي (درون)</li>
+                        <li><i class="fas fa-check"></i> 3 مراجعات مجانية</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">اختر هذه الباقة</a>
+                </div>
+                
+                <!-- الباقة المميزة -->
+                <div class="plan-card">
+                    <h3 class="plan-name">الباقة المميزة</h3>
+                    <div class="plan-price">25,000 ج.م</div>
+                    <div class="plan-period">للمشاريع الكبيرة</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> تصوير فيديو حتى 5 أيام</li>
+                        <li><i class="fas fa-check"></i> مونتاج حتى 30 دقيقة</li>
+                        <li><i class="fas fa-check"></i> تصميم صوتي كامل</li>
+                        <li><i class="fas fa-check"></i> تسليم خلال 21 يوم</li>
+                        <li><i class="fas fa-check"></i> فريق تصوير كامل</li>
+                        <li><i class="fas fa-check"></i> مراجعات غير محدودة</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">اختر هذه الباقة</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bottom-nav">
+        <a href="index.html">
+            <i class="fas fa-home"></i>
+            <span>الرئيسية</span>
+        </a>
+        <a href="portfolio.html">
+            <i class="fas fa-photo-video"></i>
+            <span>أعمالي</span>
+        </a>
+        <a href="services.html" class="active">
+            <i class="fas fa-concierge-bell"></i>
+            <span>خدماتي</span>
+        </a>
+        <a href="contact.html">
+            <i class="fas fa-envelope"></i>
+            <span>التواصل</span>
+        </a>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="لوجو أحمد علي" class="logo-img" style="height: 40px;">
+                    <span class="logo-main">أحمد<span class="logo-highlight">علي</span></span>
+                </div>
+                <p class="footer-text">مصور وفيديو جرافر محترف | 8+ سنوات خبرة</p>
+                <p class="footer-copyright">
+                    &copy; <span id="currentYear"></span> جميع الحقوق محفوظة
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+  </html>
