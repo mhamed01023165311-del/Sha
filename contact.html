@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تواصل معي | أحمد علي</title>
+    <title>تواصل معي | محمد شهاب عامر</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -20,6 +20,7 @@
         .contact-header h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            color: var(--primary-color);
         }
         
         .contact-header p {
@@ -38,7 +39,7 @@
         
         .contact-info {
             background-color: var(--dark-light);
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 40px;
         }
         
@@ -119,7 +120,7 @@
         
         .contact-form-container {
             background-color: var(--dark-light);
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 40px;
         }
         
@@ -205,7 +206,7 @@
         
         .map-container {
             height: 400px;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
         }
@@ -228,7 +229,7 @@
         
         .working-hours {
             background-color: var(--dark-light);
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 40px;
             margin-bottom: 80px;
         }
@@ -250,13 +251,20 @@
             text-align: center;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .hour-item:hover {
+            background-color: rgba(255, 87, 34, 0.05);
+            transform: translateY(-5px);
         }
         
         .day {
             color: var(--primary-color);
             font-weight: 600;
             margin-bottom: 10px;
+            font-size: 1.1rem;
         }
         
         .time {
@@ -293,10 +301,9 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="logo.png" alt="لوجو أحمد علي" class="logo-img">
                 <div class="logo-text">
-                    <span class="logo-main">أحمد<span class="logo-highlight">علي</span></span>
-                    <span class="logo-sub">مصور وفيديو جرافر</span>
+                    <span class="logo-main">محمد<span class="logo-highlight">شهاب</span></span>
+                    <span class="logo-sub">مصمم فيديوهات وجرافيك</span>
                 </div>
             </div>
             
@@ -308,10 +315,6 @@
                 <li><a href="cv.html" class="nav-link"><i class="fas fa-file-alt"></i> السيرة الذاتية</a></li>
                 <li><a href="contact.html" class="nav-link active"><i class="fas fa-envelope"></i> تواصل معي</a></li>
             </ul>
-            
-            <div class="nav-toggle" id="navToggle">
-                <i class="fas fa-bars"></i>
-            </div>
         </div>
     </nav>
 
@@ -334,7 +337,7 @@
         </a>
         <a href="cv.html" title="السيرة الذاتية">
             <i class="fas fa-file-alt"></i>
-            <span>السيرة الذاتية</span>
+            <span>السيرة</span>
         </a>
         <a href="contact.html" class="active" title="تواصل معي">
             <i class="fas fa-envelope"></i>
@@ -346,7 +349,7 @@
         <div class="container">
             <div class="contact-header">
                 <h1 class="section-title">تواصل معي</h1>
-                <p>أنا هنا لمساعدتك في مشروعك القادم. لا تتردد في التواصل معي لأي استفسارات أو لطلب خدمة. سأكون سعيدًا بالرد عليك في أقرب وقت ممكن.</p>
+                <p>أنا هنا لمساعدتك في مشروعك القادم. لا تتردد في التواصل معي لأي استفسارات أو لطلب خدمة. سأكون سعيداً بالرد عليك في أقرب وقت ممكن.</p>
             </div>
             
             <div class="contact-container">
@@ -358,8 +361,8 @@
                         </div>
                         <div class="info-content">
                             <h3>الهاتف</h3>
-                            <p>+20 123 456 7890</p>
-                            <p style="margin-top: 5px; font-size: 0.9rem;">متاح من الساعة 9 صباحًا حتى 9 مساءً</p>
+                            <p>+20 155 448 3346</p>
+                            <p style="margin-top: 5px; font-size: 0.9rem;">متاح من الساعة 9 صباحاً حتى 9 مساءً</p>
                         </div>
                     </div>
                     
@@ -369,8 +372,8 @@
                         </div>
                         <div class="info-content">
                             <h3>البريد الإلكتروني</h3>
-                            <p>ahmed@example.com</p>
-                            <p>info@ahmedali.com</p>
+                            <p>mohamedshehab5753@gmail.com</p>
+                            <p style="margin-top: 5px; font-size: 0.9rem;">أفضل طريقة للتواصل السريع</p>
                         </div>
                     </div>
                     
@@ -380,27 +383,27 @@
                         </div>
                         <div class="info-content">
                             <h3>العنوان</h3>
-                            <p>123 شارع التحرير، الدقي</p>
-                            <p>الجيزة، القاهرة، مصر</p>
+                            <p>القاهرة، مصر</p>
+                            <p style="margin-top: 5px; font-size: 0.9rem;">متوفر للعمل عن بعد مع عملاء من أي مكان</p>
                         </div>
                     </div>
                     
                     <div class="social-contact">
-                        <h3>تابعني على</h3>
+                        <h3>تواصل معي على</h3>
                         <div class="social-icons">
-                            <a href="#" class="social-icon">
+                            <a href="https://wa.me/201554483346" target="_blank" class="social-icon" title="واتساب">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" class="social-icon" title="فيسبوك">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="#" class="social-icon">
+                            <a href="https://instagram.com" target="_blank" class="social-icon" title="إنستجرام">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="#" class="social-icon">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                            <a href="#" class="social-icon">
+                            <a href="https://linkedin.com" target="_blank" class="social-icon" title="لينكد إن">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="#" class="social-icon">
+                            <a href="https://behance.net" target="_blank" class="social-icon" title="بيهانس">
                                 <i class="fab fa-behance"></i>
                             </a>
                         </div>
@@ -414,24 +417,24 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">الاسم الكامل *</label>
-                                <input type="text" id="name" name="name" required>
+                                <input type="text" id="name" name="name" required placeholder="أدخل اسمك الكامل">
                             </div>
                             
                             <div class="form-group">
                                 <label for="email">البريد الإلكتروني *</label>
-                                <input type="email" id="email" name="email" required>
+                                <input type="email" id="email" name="email" required placeholder="example@email.com">
                             </div>
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="phone">رقم الهاتف</label>
-                                <input type="tel" id="phone" name="phone">
+                                <input type="tel" id="phone" name="phone" placeholder="+20 XXX XXX XXXX">
                             </div>
                             
                             <div class="form-group">
                                 <label for="subject">الموضوع</label>
-                                <input type="text" id="subject" name="subject">
+                                <input type="text" id="subject" name="subject" placeholder="موضوع الرسالة">
                             </div>
                         </div>
                         
@@ -439,12 +442,12 @@
                             <label for="service">نوع الخدمة المطلوبة</label>
                             <select id="service" name="service">
                                 <option value="">اختر الخدمة</option>
-                                <option value="تصوير فيديو">تصوير فيديو</option>
-                                <option value="مونتاج">مونتاج</option>
+                                <option value="تصميم فيديوهات">تصميم فيديوهات</option>
                                 <option value="موشن جرافيك">موشن جرافيك</option>
-                                <option value="إنتاج فيديو تسويقي">إنتاج فيديو تسويقي</option>
-                                <option value="تصميم صوتي">تصميم صوتي</option>
-                                <option value="استشارة">استشارة</option>
+                                <option value="تصميم جرافيك">تصميم جرافيك</option>
+                                <option value="أنيميشن">أنيميشن</option>
+                                <option value="تصوير ومونتاج">تصوير ومونتاج</option>
+                                <option value="استشارة تصميم">استشارة تصميم</option>
                                 <option value="أخرى">أخرى</option>
                             </select>
                         </div>
@@ -478,19 +481,8 @@
                     <div class="map-placeholder">
                         <i class="fas fa-map-marker-alt"></i>
                         <h3>القاهرة، مصر</h3>
-                        <p>123 شارع التحرير، الدقي، الجيزة</p>
+                        <p>متوفر للعمل عن بعد مع عملاء من جميع أنحاء العالم</p>
                     </div>
-                    <!-- يمكنك إضافة خريطة Google Maps هنا -->
-                    <!--
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.556231998845!2d31.20862331511537!3d30.048511981877174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458418b5e6e8b9d%3A0x5c73b7a1b0b5b5b5!2sCairo%2C%20Egypt!5e0!3m2!1sen!2seg!4v1629999999999!5m2!1sen!2seg"
-                        width="100%"
-                        height="400"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy">
-                    </iframe>
-                    -->
                 </div>
             </div>
             
@@ -508,7 +500,7 @@
                     </div>
                     <div class="hour-item">
                         <div class="day">العطلات الرسمية</div>
-                        <div class="time">مغلق</div>
+                        <div class="time">مرن حسب الترتيب</div>
                     </div>
                     <div class="hour-item">
                         <div class="day">الاستجابة السريعة</div>
@@ -519,33 +511,13 @@
         </div>
     </section>
 
-    <div class="bottom-nav">
-        <a href="index.html">
-            <i class="fas fa-home"></i>
-            <span>الرئيسية</span>
-        </a>
-        <a href="portfolio.html">
-            <i class="fas fa-photo-video"></i>
-            <span>أعمالي</span>
-        </a>
-        <a href="services.html">
-            <i class="fas fa-concierge-bell"></i>
-            <span>خدماتي</span>
-        </a>
-        <a href="contact.html" class="active">
-            <i class="fas fa-envelope"></i>
-            <span>التواصل</span>
-        </a>
-    </div>
-
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="لوجو أحمد علي" class="logo-img" style="height: 40px;">
-                    <span class="logo-main">أحمد<span class="logo-highlight">علي</span></span>
+                    <span class="logo-main">محمد<span class="logo-highlight">شهاب</span></span>
                 </div>
-                <p class="footer-text">مصور وفيديو جرافر محترف | 8+ سنوات خبرة</p>
+                <p class="footer-text">مصمم فيديوهات وجرافيك وأنيميشن | خبرة 5+ سنوات</p>
                 <p class="footer-copyright">
                     &copy; <span id="currentYear"></span> جميع الحقوق محفوظة
                 </p>
@@ -634,4 +606,4 @@
         });
     </script>
 </body>
-  </html>
+                </html>
