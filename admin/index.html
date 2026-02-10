@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم الموقع | محمد شهاب</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- شاشة الدخول -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-box">
+            <div class="login-icon">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <h2>الدخول إلى لوحة التحكم</h2>
+            <p>للتعديل في محتوى موقع محمد شهاب</p>
+            
+            <div class="login-form">
+                <input type="password" id="adminPass" placeholder="أدخل كلمة السر" autocomplete="off">
+                <button onclick="checkLogin()">
+                    <i class="fas fa-sign-in-alt"></i> دخول
+                </button>
+                <p class="hint">كلمة السر: admin123 (غيرها بعد الدخول الأول)</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- لوحة التحكم الرئيسية -->
+    <div id="dashboard" class="dashboard hidden">
+        <!-- الهيدر -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1><i class="fas fa-cogs"></i> لوحة تحكم الموقع</h1>
+                <p>مرحباً يا مبرمج، عدل في أي حاجة</p>
+            </div>
+            <div class="header-right">
+                <button class="btn-preview" onclick="window.open('../index.html', '_blank')">
+                    <i class="fas fa-eye"></i> معاينة الموقع
+                </button>
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> خروج
+                </button>
+            </div>
+        </header>
+        
+        <!-- المحتوى -->
+        <main class="dashboard-content">
+            <!-- القائمة الجانبية -->
+            <nav class="sidebar">
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-user-edit"></i> الملف الشخصي</h3>
+                    <button class="sidebar-btn active" data-page="profile">
+                        <i class="fas fa-id-card"></i> بياناتي الشخصية
+                    </button>
+                    <button class="sidebar-btn" data-page="social">
+                        <i class="fas fa-share-alt"></i> روابط التواصل
+                    </button>
+                    <button class="sidebar-btn" data-page="skills">
+                        <i class="fas fa-star"></i> المهارات والخبرات
+                    </button>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-images"></i> الوسائط</h3>
+                    <button class="sidebar-btn" data-page="photos">
+                        <i class="fas fa-camera"></i> الصور الشخصية
+                    </button>
+                    <button class="sidebar-btn" data-page="works">
+                        <i class="fas fa-briefcase"></i> أعمالي ومشاريعي
+                    </button>
+                    <button class="sidebar-btn" data-page="videos">
+                        <i class="fas fa-video"></i> الفيديوهات
+                    </button>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-file-alt"></i> المحتوى</h3>
+                    <button class="sidebar-btn" data-page="home">
+                        <i class="fas fa-home"></i> الصفحة الرئيسية
+                    </button>
+                    <button class="sidebar-btn" data-page="services">
+                        <i class="fas fa-concierge-bell"></i> الخدمات
+                    </button>
+                    <button class="sidebar-btn" data-page="cv">
+                        <i class="fas fa-graduation-cap"></i> السيرة الذاتية
+                    </button>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3><i class="fas fa-cog"></i> الإعدادات</h3>
+                    <button class="sidebar-btn" data-page="settings">
+                        <i class="fas fa-wrench"></i> إعدادات الموقع
+                    </button>
+                    <button class="sidebar-btn" data-page="security">
+                        <i class="fas fa-shield-alt"></i> الأمان والصلاحيات
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- منطقة التحرير -->
+            <div class="editor-area">
+                <div class="editor-header">
+                    <h2 id="editorTitle">👤 تعديل الملف الشخصي</h2>
+                    <div class="editor-actions">
+                        <button class="btn-save" onclick="saveChanges()">
+                            <i class="fas fa-save"></i> حفظ التغييرات
+                        </button>
+                        <button class="btn-reset" onclick="resetForm()">
+                            <i class="fas fa-undo"></i> تراجع
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- محتوى التحرير الديناميكي -->
+                <div id="editorContent" class="editor-content">
+                    <!-- هنا سيتم تحميل نماذج التحرير -->
+                </div>
+            </div>
+            
+            <!-- المعاينة الحية -->
+            <div class="preview-area">
+                <h3><i class="fas fa-desktop"></i> معاينة التغييرات</h3>
+                <div class="preview-box">
+                    <iframe id="livePreview" src="../index.html"></iframe>
+                </div>
+                <button class="btn-refresh" onclick="refreshPreview()">
+                    <i class="fas fa-sync-alt"></i> تحديث المعاينة
+                </button>
+            </div>
+        </main>
+        
+        <!-- الفوتر -->
+        <footer class="dashboard-footer">
+            <p>لوحة تحكم موقع محمد شهاب © 2024 | تم التعديل في: <span id="lastUpdate"></span></p>
+            <p class="auto-save"><i class="fas fa-history"></i> يتم الحفظ تلقائياً كل 30 ثانية</p>
+        </footer>
+    </div>
+    
+    <!-- مكتبات -->
+    <script src="admin.js"></script>
+    <script>
+        // كلمة السر (يمكن تغييرها بعد الدخول)
+        const ADMIN_PASSWORD = "admin123";
+        let isLoggedIn = false;
+        
+        // التحقق من الدخول
+        function checkLogin() {
+            const passInput = document.getElementById('adminPass');
+            if (passInput.value === ADMIN_PASSWORD) {
+                isLoggedIn = true;
+                localStorage.setItem('adminAuth', 'true');
+                showDashboard();
+            } else {
+                alert('❌ كلمة السر غير صحيحة');
+                passInput.value = '';
+            }
+        }
+        
+        // عرض لوحة التحكم
+        function showDashboard() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            loadPage('profile'); // تحميل أول صفحة
+            updateLastUpdate();
+        }
+        
+        // تسجيل الخروج
+        function logout() {
+            if (confirm('هل تريد تسجيل الخروج؟')) {
+                localStorage.removeItem('adminAuth');
+                location.reload();
+            }
+        }
+        
+        // التحقق التلقائي عند تحميل الصفحة
+        window.onload = function() {
+            if (localStorage.getItem('adminAuth') === 'true') {
+                showDashboard();
+            }
+        };
+    </script>
+</body>
+                  </html>
