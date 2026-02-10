@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>السيرة الذاتية | أحمد علي</title>
+    <title>السيرة الذاتية | محمد شهاب عامر</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -14,7 +14,7 @@
         
         .cv-header {
             background-color: var(--dark-light);
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 40px;
             margin-bottom: 50px;
             display: flex;
@@ -39,6 +39,12 @@
             font-size: 1.3rem;
             color: var(--text-light);
             margin-bottom: 20px;
+        }
+        
+        .cv-desc {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.7;
         }
         
         .cv-contact-info {
@@ -72,8 +78,8 @@
         
         .cv-section {
             background-color: var(--dark-light);
-            border-radius: 10px;
-            padding: 30px;
+            border-radius: 15px;
+            padding: 35px;
         }
         
         .section-header {
@@ -90,7 +96,7 @@
             color: var(--primary-color);
         }
         
-        .section-title {
+        .cv-section-title {
             font-size: 1.8rem;
             color: var(--text-color);
             margin: 0;
@@ -113,7 +119,7 @@
         
         .timeline-item {
             position: relative;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             padding-right: 30px;
         }
         
@@ -133,6 +139,7 @@
             color: var(--primary-color);
             font-weight: 600;
             margin-bottom: 5px;
+            font-size: 1.1rem;
         }
         
         .timeline-title {
@@ -149,7 +156,7 @@
         
         .timeline-description {
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.7;
         }
         
         .skills-container {
@@ -171,7 +178,7 @@
         .skill-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         
         .skill-name {
@@ -184,22 +191,22 @@
         }
         
         .skill-bar {
-            height: 8px;
+            height: 10px;
             background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
+            border-radius: 5px;
             overflow: hidden;
         }
         
         .skill-progress {
             height: 100%;
             background-color: var(--primary-color);
-            border-radius: 4px;
+            border-radius: 5px;
         }
         
         .education-list {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 30px;
         }
         
         .education-item {
@@ -232,14 +239,21 @@
         .certificate-card {
             background-color: rgba(255, 87, 34, 0.05);
             border: 1px solid rgba(255, 87, 34, 0.2);
-            border-radius: 8px;
-            padding: 20px;
+            border-radius: 10px;
+            padding: 25px;
+            transition: var(--transition);
+        }
+        
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
         }
         
         .certificate-name {
             color: var(--primary-color);
             margin-bottom: 10px;
             font-size: 1.1rem;
+            font-weight: 600;
         }
         
         .certificate-issuer {
@@ -261,14 +275,21 @@
         .language-item {
             text-align: center;
             background-color: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+        
+        .language-item:hover {
+            background-color: rgba(255, 87, 34, 0.05);
+            transform: translateY(-5px);
         }
         
         .language-name {
             color: var(--primary-color);
             margin-bottom: 5px;
             font-size: 1.1rem;
+            font-weight: 600;
         }
         
         .language-level {
@@ -313,10 +334,9 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="logo.png" alt="لوجو أحمد علي" class="logo-img">
                 <div class="logo-text">
-                    <span class="logo-main">أحمد<span class="logo-highlight">علي</span></span>
-                    <span class="logo-sub">مصور وفيديو جرافر</span>
+                    <span class="logo-main">محمد<span class="logo-highlight">شهاب</span></span>
+                    <span class="logo-sub">مصمم فيديوهات وجرافيك</span>
                 </div>
             </div>
             
@@ -328,10 +348,6 @@
                 <li><a href="cv.html" class="nav-link active"><i class="fas fa-file-alt"></i> السيرة الذاتية</a></li>
                 <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> تواصل معي</a></li>
             </ul>
-            
-            <div class="nav-toggle" id="navToggle">
-                <i class="fas fa-bars"></i>
-            </div>
         </div>
     </nav>
 
@@ -354,7 +370,7 @@
         </a>
         <a href="cv.html" class="active" title="السيرة الذاتية">
             <i class="fas fa-file-alt"></i>
-            <span>السيرة الذاتية</span>
+            <span>السيرة</span>
         </a>
         <a href="contact.html" title="تواصل معي">
             <i class="fas fa-envelope"></i>
@@ -367,20 +383,22 @@
             <!-- معلومات السيرة الذاتية -->
             <div class="cv-header">
                 <div class="cv-personal-info">
-                    <h1 class="cv-name">أحمد علي محمد</h1>
-                    <h2 class="cv-title">مصور وفيديو جرافر محترف</h2>
-                    <p style="color: var(--text-light); margin-bottom: 20px;">
-                        مصور وفيديو جرافر مع أكثر من 8 سنوات خبرة في الإنتاج المرئي. متخصص في إنتاج الفيديوهات التسويقية، الأفلام الوثائقية، والمحتوى الإبداعي. أتمتع بمهارات متقدمة في التصوير والمونتاج وتصميم الجرافيك المتحرك.
+                    <h1 class="cv-name">محمد شهاب عامر</h1>
+                    <h2 class="cv-title">مصمم فيديوهات وجرافيك وأنيميشن محترف</h2>
+                    <p class="cv-desc">
+                        مصمم فيديوهات وجرافيك وأنيميشن مع خبرة تزيد عن 5 سنوات في مجال التصميم المرئي والإبداعي.
+                        متخصص في إنتاج الفيديوهات الإعلانية، الموشن جرافيك، والرسوم المتحركة. أتمتع بمهارات متقدمة
+                        في برامج Adobe Creative Suite ومتخصص في تقديم حلول إبداعية تلبي احتياجات العملاء.
                     </p>
                     
                     <div class="cv-contact-info">
                         <div class="contact-detail">
                             <i class="fas fa-phone"></i>
-                            <span>+20 123 456 7890</span>
+                            <span>+20 155 448 3346</span>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-envelope"></i>
-                            <span>ahmed@example.com</span>
+                            <span>mohamedshehab5753@gmail.com</span>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-map-marker-alt"></i>
@@ -388,19 +406,15 @@
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-globe"></i>
-                            <span>www.ahmedali.com</span>
+                            <span>متوفر للعمل عن بعد</span>
                         </div>
                     </div>
-                </div>
-                
-                <div class="cv-photo">
-                    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="صورة أحمد علي" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 5px solid var(--primary-color);">
                 </div>
             </div>
             
             <!-- زر تحميل السيرة الذاتية -->
             <div class="cv-download-btn">
-                <a href="ahmed-ali-cv.pdf" class="btn btn-primary btn-large" download>
+                <a href="mohamed-shehab-cv.pdf" class="btn btn-primary btn-large" download>
                     <i class="fas fa-download"></i> تحميل السيرة الذاتية (PDF)
                 </a>
             </div>
@@ -411,49 +425,49 @@
                 <div class="cv-section">
                     <div class="section-header">
                         <i class="fas fa-briefcase"></i>
-                        <h2 class="section-title">الخبرة العملية</h2>
+                        <h2 class="cv-section-title">الخبرة العملية</h2>
                     </div>
                     
                     <div class="timeline">
                         <!-- خبرة 1 -->
                         <div class="timeline-item">
                             <div class="timeline-date">2020 - الآن</div>
-                            <h3 class="timeline-title">مصور وفيديو جرافر حر</h3>
-                            <div class="timeline-company">مستقل - القاهرة، مصر</div>
+                            <h3 class="timeline-title">مصمم فيديوهات وجرافيك حر</h3>
+                            <div class="timeline-company">مستقل - العمل مع عملاء محليين ودوليين</div>
                             <p class="timeline-description">
-                                - العمل مع عملاء محليين ودوليين في إنتاج فيديوهات تسويقية<br>
-                                - إنتاج أفلام وثائقية قصيرة لمؤسسات ثقافية<br>
-                                - تصوير ومونتاج فيديوهات موسيقية للفنانين<br>
-                                - تصميم محتوى مرئي لوسائل التواصل الاجتماعي<br>
-                                - إدارة مشاريع فيديو كاملة من التخطيط حتى التسليم
+                                - تصميم وإنتاج فيديوهات إعلانية لشركات تكنولوجيا وخدمات<br>
+                                - إنشاء موشن جرافيك لعروض تقديمية للشركات الناشئة<br>
+                                - تصميم هويات بصرية كاملة للعلامات التجارية<br>
+                                - إنتاج رسوم متحركة تعليمية للمؤسسات التعليمية<br>
+                                - العمل مع أكثر من 50 عميل في مختلف المجالات
                             </p>
                         </div>
                         
                         <!-- خبرة 2 -->
                         <div class="timeline-item">
-                            <div class="timeline-date">2017 - 2020</div>
-                            <h3 class="timeline-title">مدير مونتاج</h3>
-                            <div class="timeline-company">قناة النجوم - القاهرة، مصر</div>
+                            <div class="timeline-date">2018 - 2020</div>
+                            <h3 class="timeline-title">مصمم جرافيك وفيديوهات</h3>
+                            <div class="timeline-company">وكالة إبداع للإنتاج الإعلامي - القاهرة</div>
                             <p class="timeline-description">
-                                - الإشراف على فريق مونتاج مكون من 5 أفراد<br>
-                                - تدريب وتطوير مهارات المونتيريين الجدد<br>
-                                - إنتاج أكثر من 500 ساعة بث تلفزيوني<br>
-                                - تطوير نظام عمل وأساليب مونتاج متقدمة<br>
-                                - تنسيق العمل مع قسمي التصوير والصوت
+                                - تصميم وتنفيذ الحملات الإعلانية المرئية<br>
+                                - إنتاج فيديوهات تسويقية للعملاء<br>
+                                - تطوير الهويات البصرية للعلامات التجارية<br>
+                                - الإشراف على جودة التصميمات المقدمة<br>
+                                - تدريب مصممين جدد على برامج التصميم
                             </p>
                         </div>
                         
                         <!-- خبرة 3 -->
                         <div class="timeline-item">
-                            <div class="timeline-date">2015 - 2017</div>
-                            <h3 class="timeline-title">مونتير مساعد</h3>
-                            <div class="timeline-company">استوديو النور - الجيزة، مصر</div>
+                            <div class="timeline-date">2017 - 2018</div>
+                            <h3 class="timeline-title">مساعد مصمم جرافيك</h3>
+                            <div class="timeline-company">استوديو الفنون البصرية - الجيزة</div>
                             <p class="timeline-description">
-                                - مساعدة في مونتاج المسلسلات التلفزيونية<br>
-                                - المشاركة في مونتاج الإعلانات التجارية<br>
-                                - تنظيم وتخزين المواد الخام للمشاريع<br>
-                                - التعاون مع فريق العمل لتحقيق رؤية المخرج<br>
-                                - تعلم أساسيات المونتاج الاحترافي
+                                - مساعدة في تصميم المواد الترويجية للعملاء<br>
+                                - المشاركة في إنتاج الفيديوهات الإعلانية<br>
+                                - تعلم أساسيات التصميم المرئي والإبداعي<br>
+                                - تنظيم وتخزين المشاريع والمواد الخام<br>
+                                - التعاون مع فريق العمل لتحقيق رؤية العميل
                             </p>
                         </div>
                     </div>
@@ -463,16 +477,16 @@
                 <div class="cv-section">
                     <div class="section-header">
                         <i class="fas fa-tools"></i>
-                        <h2 class="section-title">المهارات</h2>
+                        <h2 class="cv-section-title">المهارات</h2>
                     </div>
                     
                     <div class="skills-container">
-                        <!-- مهارات تقنية -->
+                        <!-- مهارات برامج -->
                         <div class="skill-category">
-                            <h3>المهارات التقنية</h3>
+                            <h3>المهارات البرمجية</h3>
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">Adobe Premiere Pro</span>
+                                    <span class="skill-name">Adobe After Effects</span>
                                     <span class="skill-percentage">95%</span>
                                 </div>
                                 <div class="skill-bar">
@@ -481,7 +495,7 @@
                             </div>
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">After Effects</span>
+                                    <span class="skill-name">Premiere Pro</span>
                                     <span class="skill-percentage">90%</span>
                                 </div>
                                 <div class="skill-bar">
@@ -490,30 +504,30 @@
                             </div>
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">DaVinci Resolve</span>
+                                    <span class="skill-name">Photoshop</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Illustrator</span>
                                     <span class="skill-percentage">85%</span>
                                 </div>
                                 <div class="skill-bar">
                                     <div class="skill-progress" style="width: 85%"></div>
                                 </div>
                             </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span class="skill-name">Photoshop</span>
-                                    <span class="skill-percentage">80%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%"></div>
-                                </div>
-                            </div>
                         </div>
                         
-                        <!-- مهارات إبداعية -->
+                        <!-- مهارات تقنية -->
                         <div class="skill-category">
-                            <h3>المهارات الإبداعية</h3>
+                            <h3>المهارات التقنية</h3>
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">التصوير السينمائي</span>
+                                    <span class="skill-name">الموشن جرافيك</span>
                                     <span class="skill-percentage">92%</span>
                                 </div>
                                 <div class="skill-bar">
@@ -522,16 +536,7 @@
                             </div>
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">تدرج الألوان</span>
-                                    <span class="skill-percentage">88%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 88%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span class="skill-name">تصميم الصوت</span>
+                                    <span class="skill-name">تصميم الأنيميشن</span>
                                     <span class="skill-percentage">85%</span>
                                 </div>
                                 <div class="skill-bar">
@@ -540,30 +545,7 @@
                             </div>
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">كتابة السيناريو</span>
-                                    <span class="skill-percentage">75%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- مهارات شخصية -->
-                        <div class="skill-category">
-                            <h3>المهارات الشخصية</h3>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span class="skill-name">العمل ضمن فريق</span>
-                                    <span class="skill-percentage">95%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 95%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span class="skill-name">إدارة الوقت</span>
+                                    <span class="skill-name">تصميم الهويات البصرية</span>
                                     <span class="skill-percentage">90%</span>
                                 </div>
                                 <div class="skill-bar">
@@ -572,20 +554,11 @@
                             </div>
                             <div class="skill-item">
                                 <div class="skill-header">
-                                    <span class="skill-name">التواصل الفعال</span>
+                                    <span class="skill-name">مونتاج الفيديو والصوت</span>
                                     <span class="skill-percentage">88%</span>
                                 </div>
                                 <div class="skill-bar">
                                     <div class="skill-progress" style="width: 88%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <div class="skill-header">
-                                    <span class="skill-name">حل المشكلات</span>
-                                    <span class="skill-percentage">85%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
                                 </div>
                             </div>
                         </div>
@@ -596,26 +569,20 @@
                 <div class="cv-section">
                     <div class="section-header">
                         <i class="fas fa-graduation-cap"></i>
-                        <h2 class="section-title">التعليم</h2>
+                        <h2 class="cv-section-title">التعليم</h2>
                     </div>
                     
                     <div class="education-list">
                         <div class="education-item">
-                            <h3 class="education-degree">دبلومة متقدمة في الإنتاج المرئي</h3>
-                            <div class="education-school">أكاديمية الفنون - القاهرة</div>
+                            <h3 class="education-degree">دبلومة متقدمة في تصميم الفيديوهات والأنيميشن</h3>
+                            <div class="education-school">أكاديمية التصميم الرقمي - القاهرة</div>
                             <div class="education-date">2019 - 2020</div>
                         </div>
                         
                         <div class="education-item">
-                            <h3 class="education-degree">بكالوريوس إعلام - تخصص إذاعة وتلفزيون</h3>
-                            <div class="education-school">جامعة القاهرة</div>
-                            <div class="education-date">2011 - 2015</div>
-                        </div>
-                        
-                        <div class="education-item">
-                            <h3 class="education-degree">دورة متقدمة في المونتاج الرقمي</h3>
-                            <div class="education-school">معهد التصوير السينمائي - القاهرة</div>
-                            <div class="education-date">2016</div>
+                            <h3 class="education-degree">بكالوريوس تكنولوجيا المعلومات</h3>
+                            <div class="education-school">جامعة عين شمس</div>
+                            <div class="education-date">2013 - 2017</div>
                         </div>
                     </div>
                 </div>
@@ -624,32 +591,26 @@
                 <div class="cv-section">
                     <div class="section-header">
                         <i class="fas fa-certificate"></i>
-                        <h2 class="section-title">الشهادات</h2>
+                        <h2 class="cv-section-title">الشهادات</h2>
                     </div>
                     
                     <div class="certificates-grid">
                         <div class="certificate-card">
-                            <h3 class="certificate-name">Adobe Certified Professional</h3>
+                            <div class="certificate-name">Adobe Certified Professional</div>
                             <div class="certificate-issuer">Adobe Systems</div>
                             <div class="certificate-date">2021</div>
                         </div>
                         
                         <div class="certificate-card">
-                            <h3 class="certificate-name">Certified Video Editor</h3>
-                            <div class="certificate-issuer">المركز الدولي للتدريب</div>
+                            <div class="certificate-name">Motion Graphics Specialist</div>
+                            <div class="certificate-issuer">مركز التدريب الرقمي</div>
                             <div class="certificate-date">2020</div>
                         </div>
                         
                         <div class="certificate-card">
-                            <h3 class="certificate-name">Digital Cinematography</h3>
-                            <div class="certificate-issuer">Film and TV Institute</div>
+                            <div class="certificate-name">Video Production Masterclass</div>
+                            <div class="certificate-issuer">معهد الإنتاج الإعلامي</div>
                             <div class="certificate-date">2019</div>
-                        </div>
-                        
-                        <div class="certificate-card">
-                            <h3 class="certificate-name">Color Grading Masterclass</h3>
-                            <div class="certificate-issuer">DaVinci Resolve Training Center</div>
-                            <div class="certificate-date">2018</div>
                         </div>
                     </div>
                 </div>
@@ -658,7 +619,7 @@
                 <div class="cv-section">
                     <div class="section-header">
                         <i class="fas fa-language"></i>
-                        <h2 class="section-title">اللغات</h2>
+                        <h2 class="cv-section-title">اللغات</h2>
                     </div>
                     
                     <div class="languages-list">
@@ -669,12 +630,7 @@
                         
                         <div class="language-item">
                             <div class="language-name">الإنجليزية</div>
-                            <div class="language-level">متقدم (كتابة وتحدث)</div>
-                        </div>
-                        
-                        <div class="language-item">
-                            <div class="language-name">الفرنسية</div>
-                            <div class="language-level">متوسط</div>
+                            <div class="language-level">ممتاز (كتابة وتحدث)</div>
                         </div>
                     </div>
                 </div>
@@ -682,33 +638,13 @@
         </div>
     </section>
 
-    <div class="bottom-nav">
-        <a href="index.html">
-            <i class="fas fa-home"></i>
-            <span>الرئيسية</span>
-        </a>
-        <a href="portfolio.html">
-            <i class="fas fa-photo-video"></i>
-            <span>أعمالي</span>
-        </a>
-        <a href="services.html">
-            <i class="fas fa-concierge-bell"></i>
-            <span>خدماتي</span>
-        </a>
-        <a href="cv.html" class="active">
-            <i class="fas fa-file-alt"></i>
-            <span>السيرة الذاتية</span>
-        </a>
-    </div>
-
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="لوجو أحمد علي" class="logo-img" style="height: 40px;">
-                    <span class="logo-main">أحمد<span class="logo-highlight">علي</span></span>
+                    <span class="logo-main">محمد<span class="logo-highlight">شهاب</span></span>
                 </div>
-                <p class="footer-text">مصور وفيديو جرافر محترف | 8+ سنوات خبرة</p>
+                <p class="footer-text">مصمم فيديوهات وجرافيك وأنيميشن | خبرة 5+ سنوات</p>
                 <p class="footer-copyright">
                     &copy; <span id="currentYear"></span> جميع الحقوق محفوظة
                 </p>
@@ -718,4 +654,4 @@
 
     <script src="script.js"></script>
 </body>
-  </html>
+                </html>
