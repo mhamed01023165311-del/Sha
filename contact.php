@@ -1,7 +1,7 @@
 <?php
 // إعدادات البريد الإلكتروني
-$to = "ahmed@example.com"; // ضع بريدك الإلكتروني هنا
-$site_name = "بورتفوليو أحمد علي";
+$to = "mohamedshehab5753@gmail.com"; // بريد محمد شهاب
+$site_name = "بورتفوليو محمد شهاب عامر";
 
 // التحقق من إرسال النموذج
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_message .= "من IP: " . $_SERVER['REMOTE_ADDR'];
     
     // إعداد رأس البريد
-    $headers = "From: $site_name <noreply@ahmedali.com>\r\n";
+    $headers = "From: $site_name <noreply@mohamedshehab.com>\r\n";
     $headers .= "Reply-To: $name <$email>\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion();
@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     margin: 0 auto;
                     background-color: #1e1e1e;
                     padding: 40px;
-                    border-radius: 10px;
+                    border-radius: 15px;
                     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
                 }
                 .success-icon {
@@ -130,10 +130,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     border-radius: 5px;
                     font-weight: 600;
                     transition: all 0.3s ease;
+                    margin: 10px;
                 }
                 .btn:hover {
                     background-color: #e64a19;
                     transform: translateY(-3px);
+                }
+                .btn-secondary {
+                    background-color: transparent;
+                    border: 2px solid #ff5722;
+                }
+                .btn-secondary:hover {
+                    background-color: #ff5722;
                 }
             </style>
         </head>
@@ -145,9 +153,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h1>تم إرسال رسالتك بنجاح!</h1>
                 <p>شكرًا لك <strong>$name</strong> على تواصلك معنا.<br>لقد استلمنا رسالتك وسنتواصل معك على <strong>$email</strong> في أقرب وقت ممكن.</p>
                 <p>عادةً ما يتم الرد خلال 24 ساعة عمل.</p>
-                <a href='index.html' class='btn'>
-                    <i class='fas fa-home'></i> العودة للصفحة الرئيسية
-                </a>
+                <div>
+                    <a href='index.html' class='btn'>
+                        <i class='fas fa-home'></i> العودة للصفحة الرئيسية
+                    </a>
+                    <a href='contact.html' class='btn btn-secondary'>
+                        <i class='fas fa-envelope'></i> إرسال رسالة أخرى
+                    </a>
+                </div>
             </div>
         </body>
         </html>";
