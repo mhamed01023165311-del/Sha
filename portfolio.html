@@ -3,220 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معرض الأعمال | أحمد علي</title>
+    <title>معرض الأعمال | محمد شهاب عامر</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* إضافة ستايلات خاصة بصفحة البورتفوليو */
         .portfolio-page {
             padding-top: 100px;
         }
         
-        .portfolio-filters {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 50px;
         }
         
-        .filter-btn {
-            background: transparent;
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            padding: 10px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-            font-family: 'Cairo', sans-serif;
-            font-size: 1rem;
+        .portfolio-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
         }
         
-        .filter-btn:hover,
-        .filter-btn.active {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
+        .portfolio-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
         }
         
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
             margin-bottom: 50px;
         }
         
         .portfolio-item {
             background-color: var(--dark-light);
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        .portfolio-item.hidden {
-            display: none;
+            border: 1px solid var(--border-color);
         }
         
         .portfolio-item:hover {
             transform: translateY(-10px);
+            border-color: var(--primary-color);
         }
         
         .portfolio-thumbnail {
             position: relative;
-            height: 200px;
+            height: 250px;
             overflow: hidden;
         }
         
-        .portfolio-thumbnail img {
+        .portfolio-thumbnail img,
+        .portfolio-thumbnail video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
         
-        .portfolio-item:hover .portfolio-thumbnail img {
-            transform: scale(1.1);
+        .portfolio-item:hover .portfolio-thumbnail img,
+        .portfolio-item:hover .portfolio-thumbnail video {
+            transform: scale(1.05);
         }
         
-        .portfolio-overlay {
+        .video-indicator {
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: var(--transition);
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        .portfolio-overlay h3 {
+            top: 15px;
+            left: 15px;
+            background-color: rgba(255, 87, 34, 0.9);
             color: white;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .portfolio-overlay p {
-            color: var(--text-light);
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-        
-        .portfolio-view {
-            color: var(--primary-color);
-            text-decoration: none;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 5px;
-            font-size: 0.9rem;
+        }
+        
+        .image-indicator {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(33, 150, 243, 0.9);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 87, 34, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 3px solid white;
+            opacity: 0;
+        }
+        
+        .portfolio-item:hover .play-button {
+            opacity: 1;
         }
         
         .portfolio-info {
-            padding: 20px;
+            padding: 25px;
         }
         
         .portfolio-info h3 {
+            font-size: 1.4rem;
             margin-bottom: 10px;
-            font-size: 1.3rem;
             color: var(--primary-color);
         }
         
         .portfolio-info p {
             color: var(--text-light);
-            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .portfolio-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         
         .portfolio-tag {
-            display: inline-block;
             background-color: rgba(255, 87, 34, 0.1);
             color: var(--primary-color);
-            padding: 5px 10px;
+            padding: 5px 12px;
             border-radius: 4px;
-            font-size: 0.8rem;
-            margin-top: 10px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 87, 34, 0.3);
         }
         
-        .video-section {
-            margin-top: 80px;
-        }
-        
-        .video-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .video-item {
-            background-color: var(--dark-light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* نسبة 16:9 */
-            height: 0;
-            overflow: hidden;
-        }
-        
-        .video-container iframe,
-        .video-container video {
-            position: absolute;
+        /* مشغل الفيديو */
+        .video-player {
+            display: none;
+            position: fixed;
             top: 0;
             right: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
         }
         
-        .video-info {
-            padding: 15px;
-        }
-        
-        .video-info h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        
-        .video-info p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        
-        .section-subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            color: var(--text-color);
-            text-align: center;
+        .player-container {
             position: relative;
-            padding-bottom: 15px;
+            width: 90%;
+            max-width: 900px;
+            background-color: var(--dark-color);
+            border-radius: 10px;
+            overflow: hidden;
+            animation: playerFadeIn 0.3s;
         }
         
-        .section-subtitle::after {
-            content: '';
+        @keyframes playerFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .close-player {
             position: absolute;
-            bottom: 0;
-            right: 50%;
-            transform: translateX(50%);
-            width: 60px;
-            height: 3px;
+            top: 15px;
+            left: 15px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2001;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-player:hover {
             background-color: var(--primary-color);
+        }
+        
+        #fullscreenVideo {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            display: block;
+        }
+        
+        .video-player-info {
+            padding: 20px;
+            background-color: var(--dark-light);
+        }
+        
+        .video-player-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .video-player-info p {
+            color: var(--text-light);
         }
         
         @media (max-width: 768px) {
@@ -224,17 +232,12 @@
                 grid-template-columns: 1fr;
             }
             
-            .video-gallery {
-                grid-template-columns: 1fr;
+            .portfolio-header h1 {
+                font-size: 2rem;
             }
             
-            .portfolio-filters {
-                gap: 10px;
-            }
-            
-            .filter-btn {
-                padding: 8px 15px;
-                font-size: 0.9rem;
+            .player-container {
+                width: 95%;
             }
         }
     </style>
@@ -244,10 +247,9 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="logo.png" alt="لوجو أحمد علي" class="logo-img">
                 <div class="logo-text">
-                    <span class="logo-main">أحمد<span class="logo-highlight">علي</span></span>
-                    <span class="logo-sub">مصور وفيديو جرافر</span>
+                    <span class="logo-main">محمد<span class="logo-highlight">شهاب</span></span>
+                    <span class="logo-sub">مصمم فيديوهات وجرافيك</span>
                 </div>
             </div>
             
@@ -259,10 +261,6 @@
                 <li><a href="cv.html" class="nav-link"><i class="fas fa-file-alt"></i> السيرة الذاتية</a></li>
                 <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> تواصل معي</a></li>
             </ul>
-            
-            <div class="nav-toggle" id="navToggle">
-                <i class="fas fa-bars"></i>
-            </div>
         </div>
     </nav>
 
@@ -285,7 +283,7 @@
         </a>
         <a href="cv.html" title="السيرة الذاتية">
             <i class="fas fa-file-alt"></i>
-            <span>السيرة الذاتية</span>
+            <span>السيرة</span>
         </a>
         <a href="contact.html" title="تواصل معي">
             <i class="fas fa-envelope"></i>
@@ -295,188 +293,118 @@
 
     <section class="section portfolio-page">
         <div class="container">
-            <h1 class="section-title">معرض أعمالي</h1>
-            
-            <!-- فلتر الأعمال -->
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">الكل</button>
-                <button class="filter-btn" data-filter="commercial">إعلانات تجارية</button>
-                <button class="filter-btn" data-filter="documentary">أفلام وثائقية</button>
-                <button class="filter-btn" data-filter="events">تصوير مناسبات</button>
-                <button class="filter-btn" data-filter="motion">موشن جرافيك</button>
-                <button class="filter-btn" data-filter="music">فيديوهات موسيقية</button>
+            <div class="portfolio-header">
+                <h1>معرض أعمالي</h1>
+                <p>أحدث أعمالي في مجال تصميم الفيديوهات والجرافيك والأنيميشن</p>
             </div>
             
-            <!-- معرض الصور -->
-            <div class="portfolio-grid" id="portfolioGrid">
-                <!-- مشروع 1 -->
-                <div class="portfolio-item" data-category="commercial">
+            <!-- معرض الأعمال - ضع أعمالك هنا -->
+            <div class="portfolio-grid">
+                
+                <!-- الفيديو الأول -->
+                <div class="portfolio-item video-item">
                     <div class="portfolio-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="إعلان تجاري">
-                        <div class="portfolio-overlay">
-                            <h3>إعلان تجاري</h3>
-                            <p>ماركة أزياء مصرية</p>
-                            <a href="#" class="portfolio-view"><i class="fas fa-play"></i> شاهد الفيديو</a>
+                        <div class="video-indicator">
+                            <i class="fas fa-video"></i> فيديو
+                        </div>
+                        <video poster="assets/images/video-thumb1.jpg">
+                            <source src="assets/videos/video1.mp4" type="video/mp4">
+                            متصفحك لا يدعم تشغيل الفيديو
+                        </video>
+                        <div class="play-button" data-video="assets/videos/video1.mp4">
+                            <i class="fas fa-play"></i>
                         </div>
                     </div>
                     <div class="portfolio-info">
-                        <h3>إعلان ماركة أزياء</h3>
-                        <p>تصوير ومونتاج إعلان تلفزيوني لماركة أزياء مصرية ناشئة</p>
-                        <span class="portfolio-tag">إعلان تجاري</span>
+                        <h3>فيديو إعلاني - شركة تكنولوجيا</h3>
+                        <p>تصميم وإنتاج فيديو إعلاني لشركة تكنولوجيا ناشئة. تم استخدام تقنيات الموشن جرافيك والمؤثرات البصرية.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">موشن جرافيك</span>
+                            <span class="portfolio-tag">إعلان</span>
+                            <span class="portfolio-tag">After Effects</span>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- مشروع 2 -->
-                <div class="portfolio-item" data-category="documentary">
+                <!-- الفيديو الثاني -->
+                <div class="portfolio-item video-item">
                     <div class="portfolio-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1489599809516-9827b6d1cf13?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="فيلم وثائقي">
-                        <div class="portfolio-overlay">
-                            <h3>فيلم وثائقي</h3>
-                            <p>عن الحرف اليدوية</p>
-                            <a href="#" class="portfolio-view"><i class="fas fa-play"></i> شاهد الفيديو</a>
+                        <div class="video-indicator">
+                            <i class="fas fa-video"></i> فيديو
+                        </div>
+                        <video poster="assets/images/video-thumb2.jpg">
+                            <source src="assets/videos/video2.mp4" type="video/mp4">
+                            متصفحك لا يدعم تشغيل الفيديو
+                        </video>
+                        <div class="play-button" data-video="assets/videos/video2.mp4">
+                            <i class="fas fa-play"></i>
                         </div>
                     </div>
                     <div class="portfolio-info">
-                        <h3>حرفيون مصريون</h3>
-                        <p>فيلم وثائقي قصير عن الحرف اليدوية المصرية المهددة بالانقراض</p>
-                        <span class="portfolio-tag">فيلم وثائقي</span>
+                        <h3>أنيميشن تعليمي - أكاديمية</h3>
+                        <p>تصميم فيديو أنيميشن تعليمي لأكاديمية تعليمية. استخدام الرسوم المتحركة لتوضيح المفاهيم العلمية.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">أنيميشن</span>
+                            <span class="portfolio-tag">تعليمي</span>
+                            <span class="portfolio-tag">Blender</span>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- مشروع 3 -->
-                <div class="portfolio-item" data-category="events">
+                <!-- الصورة -->
+                <div class="portfolio-item image-item">
                     <div class="portfolio-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1533237264987-ae43347ae3c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="تصوير مناسبة">
-                        <div class="portfolio-overlay">
-                            <h3>تصوير مناسبة</h3>
-                            <p>حفل زفاف</p>
-                            <a href="#" class="portfolio-view"><i class="fas fa-play"></i> شاهد الفيديو</a>
+                        <div class="image-indicator">
+                            <i class="fas fa-image"></i> صورة
                         </div>
+                        <img src="assets/images/project1.jpg" alt="تصميم هوية بصرية">
                     </div>
                     <div class="portfolio-info">
-                        <h3>حفل زفاف تذكاري</h3>
-                        <p>تصوير ومونتاج فيديو تذكاري كامل لحفل زفاف</p>
-                        <span class="portfolio-tag">تصوير مناسبات</span>
+                        <h3>هوية بصرية - مطعم</h3>
+                        <p>تصميم هوية بصرية كاملة لمطعم، تتضمن الشعار، البطاقات، القوائم، والتغليف.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">تصميم جرافيك</span>
+                            <span class="portfolio-tag">هوية بصرية</span>
+                            <span class="portfolio-tag">Illustrator</span>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- مشروع 4 -->
-                <div class="portfolio-item" data-category="motion">
-                    <div class="portfolio-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="موشن جرافيك">
-                        <div class="portfolio-overlay">
-                            <h3>موشن جرافيك</h3>
-                            <p>فيديو تعريفي</p>
-                            <a href="#" class="portfolio-view"><i class="fas fa-play"></i> شاهد الفيديو</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>فيديو تعريفي للشركة</h3>
-                        <p>تصميم موشن جرافيك تعريفي لشركة تكنولوجيا</p>
-                        <span class="portfolio-tag">موشن جرافيك</span>
-                    </div>
-                </div>
-                
-                <!-- مشروع 5 -->
-                <div class="portfolio-item" data-category="music">
-                    <div class="portfolio-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="فيديو موسيقي">
-                        <div class="portfolio-overlay">
-                            <h3>فيديو موسيقي</h3>
-                            <p>للفنان محمد حماقي</p>
-                            <a href="#" class="portfolio-view"><i class="fas fa-play"></i> شاهد الفيديو</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>كليب موسيقي</h3>
-                        <p>تصوير وإخراج كليب موسيقي للفنان محمد حماقي</p>
-                        <span class="portfolio-tag">فيديو موسيقي</span>
-                    </div>
-                </div>
-                
-                <!-- مشروع 6 -->
-                <div class="portfolio-item" data-category="commercial">
-                    <div class="portfolio-thumbnail">
-                        <img src="https://images.unsplash.com/photo-1496065187959-7f07b8353c55?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="إعلان سياحي">
-                        <div class="portfolio-overlay">
-                            <h3>إعلان سياحي</h3>
-                            <p>لمحافظة الأقصر</p>
-                            <a href="#" class="portfolio-view"><i class="fas fa-play"></i> شاهد الفيديو</a>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>إعلان سياحي للأقصر</h3>
-                        <p>تصوير وإخراج إعلان ترويجي للسياحة في الأقصر</p>
-                        <span class="portfolio-tag">إعلان تجاري</span>
-                    </div>
-                </div>
             </div>
             
-            <!-- قسم الفيديوهات -->
-            <div class="video-section">
-                <h2 class="section-subtitle">الفيديوهات</h2>
-                <div class="video-gallery">
-                    <div class="video-item">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3>إعلان تجاري - ماركة سيارات</h3>
-                            <p>تصوير ومونتاج إعلان تلفزيوني لماركة سيارات عالمية</p>
-                        </div>
-                    </div>
-                    
-                    <div class="video-item">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3>فيلم وثائقي قصير</h3>
-                            <p>عن الحياة الليلية في القاهرة</p>
-                        </div>
-                    </div>
-                    
-                    <div class="video-item">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/JGwWNGJdvx8" allowfullscreen></iframe>
-                        </div>
-                        <div class="video-info">
-                            <h3>موشن جرافيك تعليمي</h3>
-                            <p>فيديو تعليمي عن أساسيات التصوير الفوتوغرافي</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- رسالة لزيادة الأعمال -->
+            <div class="portfolio-empty" style="text-align: center; padding: 40px; background-color: var(--dark-light); border-radius: 15px;">
+                <i class="fas fa-plus-circle" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                <h3 style="color: var(--text-color); margin-bottom: 10px;">جاري العمل على مشاريع جديدة</h3>
+                <p style="color: var(--text-light); max-width: 500px; margin: 0 auto 20px;">
+                    أعمل حالياً على إضافة المزيد من الأعمال قريباً. يمكنك التواصل معي لمعرفة المزيد عن مشاريعي.
+                </p>
+                <a href="contact.html" class="btn btn-primary">تواصل معي لمشروعك</a>
             </div>
         </div>
     </section>
 
-    <div class="bottom-nav">
-        <a href="index.html">
-            <i class="fas fa-home"></i>
-            <span>الرئيسية</span>
-        </a>
-        <a href="portfolio.html" class="active">
-            <i class="fas fa-photo-video"></i>
-            <span>أعمالي</span>
-        </a>
-        <a href="services.html">
-            <i class="fas fa-concierge-bell"></i>
-            <span>خدماتي</span>
-        </a>
-        <a href="contact.html">
-            <i class="fas fa-envelope"></i>
-            <span>التواصل</span>
-        </a>
+    <!-- مشغل الفيديو -->
+    <div id="videoPlayer" class="video-player">
+        <div class="player-container">
+            <span class="close-player">&times;</span>
+            <video id="fullscreenVideo" controls>
+                متصفحك لا يدعم تشغيل الفيديو
+            </video>
+            <div class="video-player-info">
+                <h3 id="videoTitle">عنوان الفيديو</h3>
+                <p id="videoDescription">وصف الفيديو</p>
+            </div>
+        </div>
     </div>
 
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="لوجو أحمد علي" class="logo-img" style="height: 40px;">
-                    <span class="logo-main">أحمد<span class="logo-highlight">علي</span></span>
+                    <span class="logo-main">محمد<span class="logo-highlight">شهاب</span></span>
                 </div>
-                <p class="footer-text">مصور وفيديو جرافر محترف | 8+ سنوات خبرة</p>
+                <p class="footer-text">مصمم فيديوهات وجرافيك وأنيميشن | خبرة 5+ سنوات</p>
                 <p class="footer-copyright">
                     &copy; <span id="currentYear"></span> جميع الحقوق محفوظة
                 </p>
@@ -486,117 +414,47 @@
 
     <script src="script.js"></script>
     <script>
-        // فلترة الأعمال
+        // تشغيل الفيديو
         document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            const playButtons = document.querySelectorAll('.play-button');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const fullscreenVideo = document.getElementById('fullscreenVideo');
+            const videoTitle = document.getElementById('videoTitle');
+            const videoDescription = document.getElementById('videoDescription');
+            const closePlayer = document.querySelector('.close-player');
             
-            filterButtons.forEach(button => {
+            playButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // إزالة النشط من كل الأزرار
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    const videoSrc = this.getAttribute('data-video');
+                    const portfolioItem = this.closest('.portfolio-item');
+                    const title = portfolioItem.querySelector('.portfolio-info h3').textContent;
+                    const description = portfolioItem.querySelector('.portfolio-info p').textContent;
                     
-                    // إضافة النشط للزر المختار
-                    this.classList.add('active');
+                    fullscreenVideo.src = videoSrc;
+                    videoTitle.textContent = title;
+                    videoDescription.textContent = description;
                     
-                    // الحصول على قيمة التصفية
-                    const filterValue = this.getAttribute('data-filter');
-                    
-                    // تصفية العناصر
-                    portfolioItems.forEach(item => {
-                        const itemCategory = item.getAttribute('data-category');
-                        
-                        if (filterValue === 'all' || itemCategory === filterValue) {
-                            item.classList.remove('hidden');
-                            setTimeout(() => {
-                                item.style.opacity = '1';
-                                item.style.transform = 'scale(1)';
-                            }, 10);
-                        } else {
-                            item.style.opacity = '0';
-                            item.style.transform = 'scale(0.8)';
-                            setTimeout(() => {
-                                item.classList.add('hidden');
-                            }, 300);
-                        }
-                    });
+                    videoPlayer.style.display = 'flex';
+                    fullscreenVideo.play();
                 });
             });
             
-            // Lightbox للصور
-            const portfolioImages = document.querySelectorAll('.portfolio-thumbnail img');
-            portfolioImages.forEach(img => {
-                img.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // إنشاء lightbox
-                    const lightbox = document.createElement('div');
-                    lightbox.className = 'lightbox';
-                    lightbox.innerHTML = `
-                        <div class="lightbox-content">
-                            <span class="close-lightbox">&times;</span>
-                            <img src="${this.src}" alt="${this.alt}">
-                            <div class="lightbox-caption">${this.alt}</div>
-                        </div>
-                    `;
-                    
-                    document.body.appendChild(lightbox);
-                    
-                    // إغلاق lightbox
-                    lightbox.querySelector('.close-lightbox').addEventListener('click', () => {
-                        document.body.removeChild(lightbox);
-                    });
-                    
-                    lightbox.addEventListener('click', (e) => {
-                        if (e.target === lightbox) {
-                            document.body.removeChild(lightbox);
-                        }
-                    });
-                });
+            // إغلاق مشغل الفيديو
+            closePlayer.addEventListener('click', function() {
+                videoPlayer.style.display = 'none';
+                fullscreenVideo.pause();
+                fullscreenVideo.currentTime = 0;
+            });
+            
+            // إغلاق عند النقر خارج المشغل
+            videoPlayer.addEventListener('click', function(e) {
+                if (e.target === videoPlayer) {
+                    videoPlayer.style.display = 'none';
+                    fullscreenVideo.pause();
+                    fullscreenVideo.currentTime = 0;
+                }
             });
         });
     </script>
-    <style>
-        .lightbox {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-        
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-        
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: 10px;
-        }
-        
-        .close-lightbox {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-        
-        .lightbox-caption {
-            color: white;
-            text-align: center;
-            margin-top: 10px;
-            font-size: 1.2rem;
-        }
-    </style>
 </body>
-  </html>
+            </html>
