@@ -1,0 +1,85 @@
+{
+  "site": {
+    "title": "محمد شهاب | مطور واجهات أمامية",
+    "description": "موقع شخصي لعرض الأعمال والمشاريع",
+    "favicon": "../logo.png",
+    "theme": "dark",
+    "language": "ar"
+  },
+  
+  "home": {
+    "hero_title": "مرحباً، أنا محمد شهاب",
+    "hero_subtitle": "مطور واجهات أمامية محترف",
+    "hero_background": "../assets/images/background.jpg",
+    "welcome_text": "أطور حلول ويب مبتكرة وجذابة..."
+  },
+  
+  "profile": {
+    "name": "محمد شهاب",
+    "job_title": "مطور واجهات أمامية",
+    "bio": "مطور واجهات أمامية متخصص في HTML5، CSS3، JavaScript، React، Vue.js...",
+    "email": "mohamed@example.com",
+    "phone": "+201234567890",
+    "location": "القاهرة، مصر",
+    "photo": "../assets/images/profile.jpg",
+    
+    "social": {
+      "facebook": "#",
+      "twitter": "#",
+      "linkedin": "#",
+      "github": "#",
+      "whatsapp": "#"
+    },
+    
+    "skills": ["HTML5", "CSS3", "JavaScript", "React", "Vue.js", "UI/UX"]
+  },
+  
+  "portfolio": {
+    "works": [
+      {
+        "id": 1,
+        "title": "مشروع موقع تجارة إلكترونية",
+        "category": "تطوير ويب",
+        "description": "موقع متكامل للتجارة الإلكترونية...",
+        "image": "../assets/images/works/project1.jpg",
+        "video": "../assets/videos/project1.mp4",
+        "link": "#",
+        "technologies": ["React", "Node.js"],
+        "date": "2023-10-15"
+      }
+    ]
+  },
+  
+  "services": [
+    {
+      "id": 1,
+      "title": "تطوير مواقع الويب",
+      "description": "تصميم وتطوير مواقع ويب احترافية...",
+      "icon": "fas fa-code"
+    }
+  ],
+  
+  "cv": {
+    "education": [
+      {
+        "degree": "بكالوريوس علوم الحاسب",
+        "institution": "جامعة القاهرة",
+        "year": "2020"
+      }
+    ],
+    "experience": [
+      {
+        "position": "مطور واجهات أمامية",
+        "company": "شركة تكنولوجيا",
+        "period": "2021-2023"
+      }
+    ]
+  },
+  
+  "contact": {
+    "email": "contact@mohamedshehab.com",
+    "phone": "+201234567890",
+    "address": "القاهرة، مصر",
+    "whatsapp": "+201234567890"
+  }
+}
