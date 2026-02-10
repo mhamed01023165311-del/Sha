@@ -1,0 +1,548 @@
+/* إعادة التعيين */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    direction: rtl;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* شاشة الدخول */
+.login-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                url('login-bg.jpg') center/cover;
+}
+
+.login-box {
+    background: rgba(30, 30, 46, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border: 2px solid #ff5722;
+    box-shadow: 0 15px 35px rgba(255, 87, 34, 0.2);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.login-icon {
+    font-size: 4rem;
+    color: #ff5722;
+    margin-bottom: 20px;
+}
+
+.login-box h2 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.login-box p {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid #444;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: #ff5722;
+    background: rgba(255,255,255,0.15);
+}
+
+.login-form button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #ff5722 0%, #e64a19 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.login-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
+}
+
+.hint {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* لوحة التحكم */
+.hidden {
+    display: none !important;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* هيدر لوحة التحكم */
+.dashboard-header {
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #ff5722;
+    flex-wrap: wrap;
+}
+
+.header-left h1 {
+    color: #ff5722;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.header-left p {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.header-right {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-preview, .btn-logout {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-preview {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.btn-preview:hover {
+    background: #444;
+    border-color: #ff5722;
+}
+
+.btn-logout {
+    background: transparent;
+    color: #ff5722;
+    border: 1px solid #ff5722;
+}
+
+.btn-logout:hover {
+    background: rgba(255, 87, 34, 0.1);
+}
+
+/* المحتوى الرئيسي */
+.dashboard-content {
+    display: grid;
+    grid-template-columns: 250px 1fr 350px;
+    flex: 1;
+    gap: 20px;
+    padding: 20px;
+    background: #0f0f0f;
+}
+
+/* الشريط الجانبي */
+.sidebar {
+    background: rgba(30, 30, 46, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid #333;
+}
+
+.sidebar-section {
+    margin-bottom: 30px;
+}
+
+.sidebar-section h3 {
+    color: #ff5722;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 15px;
+    background: transparent;
+    color: #ccc;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Cairo', sans-serif;
+    text-align: right;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 8px;
+}
+
+.sidebar-btn:hover {
+    background: rgba(255, 87, 34, 0.1);
+    color: #fff;
+    transform: translateX(-5px);
+}
+
+.sidebar-btn.active {
+    background: rgba(255, 87, 34, 0.2);
+    color: #ff5722;
+    border-right: 3px solid #ff5722;
+}
+
+/* منطقة التحرير */
+.editor-area {
+    background: rgba(30, 30, 46, 0.8);
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid #333;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 87, 34, 0.3);
+}
+
+.editor-header h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-save, .btn-reset {
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-save {
+    background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+    color: white;
+}
+
+.btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.btn-reset {
+    background: #555;
+    color: white;
+}
+
+.btn-reset:hover {
+    background: #666;
+}
+
+/* محتوى التحرير */
+.editor-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* نماذج التحرير */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="url"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #555;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ff5722;
+    background: rgba(255,255,255,0.1);
+}
+
+/* رفع الملفات */
+.upload-area {
+    border: 2px dashed #555;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 15px;
+}
+
+.upload-area:hover {
+    border-color: #ff5722;
+    background: rgba(255, 87, 34, 0.05);
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.upload-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #333;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.upload-btn:hover {
+    background: #444;
+}
+
+.preview-image {
+    max-width: 200px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 2px solid #444;
+}
+
+/* المعاينة الحية */
+.preview-area {
+    background: rgba(30, 30, 46, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid #333;
+}
+
+.preview-area h3 {
+    color: #ff5722;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.preview-box {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid #333;
+    margin-bottom: 15px;
+    height: 400px;
+}
+
+.preview-box iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.btn-refresh {
+    width: 100%;
+    padding: 12px;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.btn-refresh:hover {
+    background: #444;
+}
+
+/* الفوتر */
+.dashboard-footer {
+    background: #0a0a0a;
+    padding: 15px 30px;
+    text-align: center;
+    border-top: 1px solid #333;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.auto-save {
+    color: #4CAF50;
+    margin-top: 5px;
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 1200px) {
+    .dashboard-content {
+        grid-template-columns: 250px 1fr;
+    }
+    
+    .preview-area {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        display: none;
+    }
+    
+    .dashboard-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* تأثيرات إضافية */
+.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ff5722;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.success-message {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #4CAF50;
+    margin: 15px 0;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* أكواد الألوان */
+.color-picker {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.color-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.color-option.selected {
+    border-color: #fff;
+    transform: scale(1.1);
+  }
