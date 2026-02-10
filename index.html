@@ -9,6 +9,142 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* تعديلات للعمل الفعلي */
+        .latest-works {
+            background-color: var(--dark-light);
+            padding: 80px 0;
+        }
+        
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .work-item {
+            background-color: var(--dark-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .work-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .work-preview {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .work-preview img,
+        .work-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .work-item:hover .work-preview img,
+        .work-item:hover .work-preview video {
+            transform: scale(1.1);
+        }
+        
+        .work-type-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .work-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .work-item:hover .work-overlay {
+            opacity: 1;
+        }
+        
+        .play-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 87, 34, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            border: 3px solid white;
+        }
+        
+        .work-info {
+            padding: 20px;
+        }
+        
+        .work-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+        
+        .work-info p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .work-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .work-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* تعديل القسم الرئيسي */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('logo.png'); /* استبدل بصورتك */
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #000;
+        }
+        
+        @media (max-width: 768px) {
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- شريط التنقل -->
@@ -32,7 +168,6 @@
         </div>
     </nav>
 
-    <!-- الشريط الجانبي للأيقونات -->
     <div class="sidebar-nav">
         <a href="index.html" class="active" title="الرئيسية">
             <i class="fas fa-home"></i>
@@ -62,13 +197,12 @@
 
     <!-- القسم الرئيسي -->
     <section class="hero-section">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">محمد شهاب عامر</h1>
             <p class="hero-subtitle">مصمم فيديوهات وجرافيك وأنيميشن</p>
             <p class="hero-desc">متخصص في تصميم الفيديوهات الإعلانية، الموشن جرافيك، والجرافيك المتحرك</p>
             <div class="hero-buttons">
-                <a href="portfolio.html" class="btn btn-primary">تصفح أعمالي</a>
+                <a href="#latest-works" class="btn btn-primary">شاهد أعمالي</a>
                 <a href="contact.html" class="btn btn-secondary">اطلب خدمة</a>
             </div>
         </div>
@@ -104,46 +238,115 @@
     </section>
 
     <!-- قسم أحدث الأعمال -->
-    <section class="section latest-works">
+    <section id="latest-works" class="latest-works">
         <div class="container">
             <h2 class="section-title">أحدث أعمالي</h2>
+            <p class="text-center" style="color: var(--text-light); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                تصفح أحدث أعمالي في تصميم الفيديوهات والجرافيك. اضغط على أي عمل لمشاهدته مباشرة.
+            </p>
+            
             <div class="works-grid">
-                <div class="work-item">
-                    <div class="work-image">
-                        <div class="work-type">فيديو</div>
+                <!-- الفيديو الأول -->
+                <div class="work-item" data-type="video" data-video="assets/videos/video1.mp4">
+                    <div class="work-preview">
+                        <div class="work-type-badge">
+                            <i class="fas fa-video"></i> فيديو
+                        </div>
+                        <img src="assets/images/video-thumb1.jpg" alt="فيديو إعلاني - شركة تكنولوجيا">
+                        <div class="work-overlay">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="work-info">
-                        <h3>فيديو إعلاني</h3>
-                        <p>تصميم فيديو إعلاني لشركة تكنولوجيا</p>
-                        <a href="portfolio.html" class="work-link">عرض التفاصيل →</a>
+                        <h3>فيديو إعلاني - شركة تكنولوجيا</h3>
+                        <p>تصميم وإنتاج فيديو إعلاني لشركة تكنولوجيا ناشئة</p>
+                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                            <span style="background-color: rgba(255, 87, 34, 0.1); color: var(--primary-color); padding: 3px 10px; border-radius: 4px; font-size: 0.8rem;">موشن جرافيك</span>
+                            <span style="background-color: rgba(255, 87, 34, 0.1); color: var(--primary-color); padding: 3px 10px; border-radius: 4px; font-size: 0.8rem;">إعلان</span>
+                        </div>
                     </div>
                 </div>
-                <div class="work-item">
-                    <div class="work-image">
-                        <div class="work-type">موشن جرافيك</div>
+                
+                <!-- الفيديو الثاني -->
+                <div class="work-item" data-type="video" data-video="assets/videos/video2.mp4">
+                    <div class="work-preview">
+                        <div class="work-type-badge">
+                            <i class="fas fa-video"></i> فيديو
+                        </div>
+                        <img src="assets/images/video-thumb2.jpg" alt="أنيميشن تعليمي - أكاديمية">
+                        <div class="work-overlay">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="work-info">
-                        <h3>عرض تقديمي</h3>
-                        <p>موشن جرافيك لعرض تقديمي لشركة ناشئة</p>
-                        <a href="portfolio.html" class="work-link">عرض التفاصيل →</a>
+                        <h3>أنيميشن تعليمي - أكاديمية</h3>
+                        <p>تصميم فيديو أنيميشن تعليمي لأكاديمية تعليمية</p>
+                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                            <span style="background-color: rgba(255, 87, 34, 0.1); color: var(--primary-color); padding: 3px 10px; border-radius: 4px; font-size: 0.8rem;">أنيميشن</span>
+                            <span style="background-color: rgba(255, 87, 34, 0.1); color: var(--primary-color); padding: 3px 10px; border-radius: 4px; font-size: 0.8rem;">تعليمي</span>
+                        </div>
                     </div>
                 </div>
-                <div class="work-item">
-                    <div class="work-image">
-                        <div class="work-type">تصميم</div>
+                
+                <!-- الصورة -->
+                <div class="work-item" data-type="image" data-image="assets/images/project1.jpg">
+                    <div class="work-preview">
+                        <div class="work-type-badge" style="background-color: #2196f3;">
+                            <i class="fas fa-image"></i> صورة
+                        </div>
+                        <img src="assets/images/project1.jpg" alt="هوية بصرية - مطعم">
+                        <div class="work-overlay">
+                            <div class="play-icon" style="background-color: rgba(33, 150, 243, 0.9);">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                        </div>
                     </div>
                     <div class="work-info">
-                        <h3>هوية بصرية</h3>
+                        <h3>هوية بصرية - مطعم</h3>
                         <p>تصميم هوية بصرية كاملة لمطعم</p>
-                        <a href="portfolio.html" class="work-link">عرض التفاصيل →</a>
+                        <div style="display: flex; gap: 10px; margin-top: 10px;">
+                            <span style="background-color: rgba(33, 150, 243, 0.1); color: #2196f3; padding: 3px 10px; border-radius: 4px; font-size: 0.8rem;">تصميم جرافيك</span>
+                            <span style="background-color: rgba(33, 150, 243, 0.1); color: #2196f3; padding: 3px 10px; border-radius: 4px; font-size: 0.8rem;">هوية بصرية</span>
+                        </div>
                     </div>
                 </div>
             </div>
+            
             <div class="text-center">
                 <a href="portfolio.html" class="btn btn-primary">عرض كل الأعمال</a>
             </div>
         </div>
     </section>
+
+    <!-- مشغل الفيديو -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <video id="modalVideo" controls>
+                متصفحك لا يدعم تشغيل الفيديو
+            </video>
+            <div class="video-info">
+                <h3 id="videoTitle"></h3>
+                <p id="videoDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox للصور -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="image-info">
+                <h3 id="imageTitle"></h3>
+                <p id="imageDescription"></p>
+            </div>
+        </div>
+    </div>
 
     <!-- الفوتر -->
     <footer class="footer">
@@ -161,5 +364,150 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // تشغيل الفيديو عند الضغط على العمل
+        document.addEventListener('DOMContentLoaded', function() {
+            const workItems = document.querySelectorAll('.work-item');
+            const videoModal = document.getElementById('videoModal');
+            const imageModal = document.getElementById('imageModal');
+            const modalVideo = document.getElementById('modalVideo');
+            const modalImage = document.getElementById('modalImage');
+            const videoTitle = document.getElementById('videoTitle');
+            const imageTitle = document.getElementById('imageTitle');
+            const videoDescription = document.getElementById('videoDescription');
+            const imageDescription = document.getElementById('imageDescription');
+            const closeModals = document.querySelectorAll('.close-modal');
+            
+            workItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const type = this.getAttribute('data-type');
+                    const workTitle = this.querySelector('.work-info h3').textContent;
+                    const workDesc = this.querySelector('.work-info p').textContent;
+                    
+                    if (type === 'video') {
+                        const videoSrc = this.getAttribute('data-video');
+                        modalVideo.src = videoSrc;
+                        videoTitle.textContent = workTitle;
+                        videoDescription.textContent = workDesc;
+                        videoModal.style.display = 'flex';
+                        modalVideo.play();
+                    } else if (type === 'image') {
+                        const imgSrc = this.querySelector('img').src;
+                        const imgAlt = this.querySelector('img').alt;
+                        modalImage.src = imgSrc;
+                        modalImage.alt = imgAlt;
+                        imageTitle.textContent = workTitle;
+                        imageDescription.textContent = workDesc;
+                        imageModal.style.display = 'flex';
+                    }
+                });
+            });
+            
+            // إغلاق الـ modals
+            closeModals.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    videoModal.style.display = 'none';
+                    imageModal.style.display = 'none';
+                    if (modalVideo) {
+                        modalVideo.pause();
+                        modalVideo.currentTime = 0;
+                    }
+                });
+            });
+            
+            // إغلاق عند النقر خارج المحتوى
+            window.addEventListener('click', function(e) {
+                if (e.target === videoModal) {
+                    videoModal.style.display = 'none';
+                    modalVideo.pause();
+                    modalVideo.currentTime = 0;
+                }
+                if (e.target === imageModal) {
+                    imageModal.style.display = 'none';
+                }
+            });
+        });
+    </script>
+    <style>
+        /* أنماط الـ Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background-color: var(--dark-color);
+            border-radius: 10px;
+            overflow: hidden;
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2001;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-modal:hover {
+            background-color: var(--primary-color);
+        }
+        
+        #modalVideo {
+            width: 100%;
+            max-height: 70vh;
+        }
+        
+        #modalImage {
+            max-width: 100%;
+            max-height: 70vh;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .video-info,
+        .image-info {
+            padding: 20px;
+            background-color: var(--dark-light);
+        }
+        
+        .video-info h3,
+        .image-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .video-info p,
+        .image-info p {
+            color: var(--text-light);
+        }
+    </style>
 </body>
-                </html>
+    </html>
