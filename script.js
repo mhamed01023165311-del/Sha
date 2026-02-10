@@ -1,80 +1,50 @@
 // تهيئة الصفحة عند التحميل
 document.addEventListener('DOMContentLoaded', function() {
     // تحديث سنة حقوق النشر
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    const currentYear = new Date().getFullYear();
+    const yearElements = document.querySelectorAll('#currentYear');
+    
+    yearElements.forEach(element => {
+        if (element) {
+            element.textContent = currentYear;
+        }
+    });
     
     // تعريف العناصر
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
-    const bottomNavLinks = document.querySelectorAll('.bottom-nav a');
     const navLinks = document.querySelectorAll('.nav-link');
+    const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
     
-    // تبديل قائمة الهاتف
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            this.querySelector('i').classList.toggle('fa-bars');
-            this.querySelector('i').classList.toggle('fa-times');
+    // تحديث الروابط النشطة
+    function updateActiveLinks() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        
+        // تحديث قائمة التنقل العلوية
+        navLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (currentPage === linkHref || 
+                (currentPage === '' && linkHref === 'index.html')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+        
+        // تحديث الشريط الجانبي
+        sidebarLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (currentPage === linkHref || 
+                (currentPage === '' && linkHref === 'index.html')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
         });
     }
     
-    // إغلاق القائمة عند النقر على رابط
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                if (navToggle) {
-                    navToggle.querySelector('i').classList.add('fa-bars');
-                    navToggle.querySelector('i').classList.remove('fa-times');
-                }
-            }
-            
-            // تحديث الرابط النشط
-            navLinks.forEach(item => item.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
+    // تحديث الروابط عند تحميل الصفحة
+    updateActiveLinks();
     
-    // تحديد الصفحة النشطة في الشريط الجانبي
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    sidebarLinks.forEach(link => {
-        const linkHref = link.getAttribute('href');
-        if (currentPage === linkHref || 
-            (currentPage === '' && linkHref === 'index.html') ||
-            (currentPage.includes(linkHref.replace('.html', ''))) ) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-    
-    // نفس الشيء للبوتوم ناف
-    bottomNavLinks.forEach(link => {
-        const linkHref = link.getAttribute('href');
-        if (currentPage === linkHref || 
-            (currentPage === '' && linkHref === 'index.html') ||
-            (currentPage.includes(linkHref.replace('.html', ''))) ) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-    
-    // تحديث الرابط النشط في قائمة التنقل العلوية
-    navLinks.forEach(link => {
-        const linkHref = link.getAttribute('href');
-        if (currentPage === linkHref || 
-            (currentPage === '' && linkHref === 'index.html') ||
-            (currentPage.includes(linkHref.replace('.html', ''))) ) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-    
-    // إضافة تأثيرات عند التمرير (اختياري)
+    // إضافة تأثيرات عند التمرير
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -100px 0px'
@@ -89,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
     
     // مراقبة العناصر لإضافة تأثيرات
-    document.querySelectorAll('.feature-card, .work-item').forEach(el => {
+    document.querySelectorAll('.feature-card, .work-item, .service-card, .step, .portfolio-item').forEach(el => {
         observer.observe(el);
     });
     
@@ -115,4 +85,50 @@ document.addEventListener('DOMContentLoaded', function() {
     const styleSheet = document.createElement('style');
     styleSheet.textContent = fadeInStyles;
     document.head.appendChild(styleSheet);
+    
+    // تأثير سلس للروابط
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 });
+
+// دالة للتحقق من النموذج
+function validateForm(formId) {
+    const form = document.getElementById(formId);
+    if (!form) return true;
+    
+    const requiredFields = form.querySelectorAll('[required]');
+    let isValid = true;
+    
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            isValid = false;
+            field.style.borderColor = '#f44336';
+            
+            // إزالة التأثير عند التركيز
+            field.addEventListener('focus', function() {
+                this.style.borderColor = 'var(--primary-color)';
+            });
+        }
+    });
+    
+    if (!isValid) {
+        alert('الرجاء ملء جميع الحقول المطلوبة');
+        return false;
+    }
+    
+    return true;
+                          }
